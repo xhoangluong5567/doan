@@ -23,6 +23,7 @@ Route::group(['prefix' => 'login', 'middleware' => 'CheckLogedIn'], function () 
     Route::post('/', 'AdminController@postLogin');
 
 
+
 });
 Route::get('/register', 'AdminController@getRegister');
 Route::post('/register', 'AdminController@postRegister');
@@ -34,12 +35,12 @@ Route::get('/search', 'ProductController@search');
 
 
 Route::resource('user', 'UserController');
-Route::resource('categories', 'CategoryController');
-Route::resource('products', 'ProductController');
+
 Route::group(['prefix' => 'laravel-filemanager'], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
-
+Route::resource('categories', 'CategoryController');
+Route::resource('products', 'ProductController');
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('categories/{id}','CategoryController@show');
 Route::get('product/{id}','ProductController@showhang');
