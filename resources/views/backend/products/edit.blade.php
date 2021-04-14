@@ -29,6 +29,7 @@
                                     <label>Name</label>
                                     <input type="text" name="name" value="{{ $products->name }}" class="form-control">
                                 </div>
+                                
                                 <div class="form-group">
                                     <label>Ảnh sản phẩm</label><br>
                                     <img id="avatar" multiple class="form-control-file" width="300px" src="{{url('upload')}}/{{$products->images}}">

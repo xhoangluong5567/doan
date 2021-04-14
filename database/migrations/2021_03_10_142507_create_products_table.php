@@ -25,7 +25,7 @@ class CreateProductsTable extends Migration
             $table->tinyInteger('active')->default(1)->index();
             $table->tinyInteger('hot')->default(1)->index();
             $table->string('desc');
-            $table->foreignId('categories_id')->references('id')->on('categories')
+            $table->foreignId('categories_id')->references('id')->on('categories')->onDelete('cascade')
             ->onDelete('cascade');
             $table->timestamps();
         });

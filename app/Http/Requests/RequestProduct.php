@@ -25,6 +25,7 @@ class RequestProduct extends FormRequest
     {
         return [
             'name' => 'required|unique:products,name,'.$this->id,
+            'price' => 'required|numeric',
             'images' => 'required',
             'desc' => 'required',
             'images_phu' => 'required'
@@ -33,10 +34,11 @@ class RequestProduct extends FormRequest
     public function messages()
     {
         return [
-            'images.required' => 'Vui long them anh',
-            'images_phu.required' => 'Vui long them anh hi',
-            'desc.required' => 'Khong duoc de trong',
-            'name.unique' => 'Da ton tai'
+            'images.required' => 'Không được để trống trường này',
+            'images_phu.required' => 'Không được để trống trường này',
+            'desc.required' => 'Không được để trống trường này',
+            'name.unique' => 'Tên sản phẩm đã tổn tại. Vui lòng kiểm tra lại',
+            'price.numeric' => 'Trường này bắt buộc phải là số'
 
 
         ];

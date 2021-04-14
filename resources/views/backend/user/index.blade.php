@@ -54,12 +54,11 @@
                                             <th scope="row">{{ $user->id }}</th>
                                             <td>{{ $user->name }}</td>
                                             <td>{{ $user->email }}</td>
-                                            <td>{{ $user->password }}</td>
+                                            <td class="">{{ $user->password }}</td>
                                             <td><a href="{{ route('backend.user.index',['hot',$user->id]) }}"
                                                     class="}}">{{ $user->level }}</a>
                                             </td>
-                                            <td> <a href="{{ route('backend.user.index',['active',$user->id]) }}"
-                                                    class="label {{ $user->getStatus($user->active)['class'] }}">{{ $user->getStatus($user->active)['name'] }}</a>
+                                            <td> <a href="{{ route('backend.user.index',['active',$user->id]) }}">
                                             </td>
 
                                             <td> <a class=""

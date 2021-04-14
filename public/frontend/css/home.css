@@ -1,11 +1,39 @@
 *{
 	padding: 0;
 	margin: 0;
+
+}
+
+#complete{
+	margin-top: 15px;
+	border: 1px solid rgb(1, 1, 3);
+	padding: 10px 10px;
+}
+#complete p{
+	text-align: justify;
+}
+div.dropps-menu {
+	/* float: right; */
+	}
+ul.nav {
+	width: 40%;
+	margin: auto;
+
+}
+li.nav-menu a {
+	text-decoration: none;
+	display: block;
+	color:rgb(0, 0, 0)
+
+}
+a.form{
+	padding: 20px;
 }
 body{
 	font-family: arial;
 	font-size: 14px;
 	color: #666;
+	
 }
 div.cate-item-name.f15-bold {
 	text-decoration: none
@@ -14,10 +42,10 @@ div.cate-item-name.f15-bold {
 	text-align: center;
 }
  div.col.medium-3.small-6.large-3 {
-	border-right: 1px solid rgba(0,0,0,.05);
+	/* border-right: 1px solid rgba(0,0,0,.05);
     border-bottom: 1px solid rgba(0,0,0,.05);
     border-top: 1px solid rgba(0,0,0,.05);
-    border-left: 1px solid rgba(0,0,0,.05);
+    border-left: 1px solid rgba(0,0,0,.05); */
 } 
 /* div.icon-box-text.last-reset {
 	margin: -50px 41px;
@@ -317,27 +345,32 @@ div.product-details p {
 @media only screen and (max-width : 480px) {
 	div.col-md-6.chinh img {
 		height: 141px;
-    width: auto;
-    margin-left: -16px;
+    width: 100%;
+	margin: 0px auto;
     margin-top: -30px;
 
 
 	}
+	ul.nav {
+		margin-left:20%;
+	
+	}
+
 
 
 	div.col-md-6.phu1 img{
 
 	height: 104px;
-    width: auto;
-    margin-left: -16px;
-	margin-top: 2px;
+    width: 100%;
+	margin: 0px auto;
 
 	}
 	div.col-md-3.phu2 img{
 	height: 97.6px;
-    width: auto;
-    margin-left: -16px;
-	margin-top: 2px;
+    width: 100%;
+	margin: 0px auto;
+
+		margin-top: 2px;
 		
 	}
 	.gif img {
@@ -378,7 +411,9 @@ div.product-details p {
 		height: auto;
 	}
 	#logo{
-		position: relative;
+		/* position: relative; */
+		width: 100%;
+		margin: 0px auto;
 	}
 	nav a#pull {
 		display: block;
@@ -419,7 +454,7 @@ div.product-details p {
         } */
     }
 
-div.col-sm-2 {
+/* div.col-sm-2 {
 	border-right: 1px solid rgba(0,0,0,.05);
     border-bottom: 1px solid rgba(0,0,0,.05);
 	border-top: 1px solid rgba(0,0,0,.05);
@@ -427,7 +462,7 @@ div.col-sm-2 {
 
 
 
-}
+} */
 div.cate-item.text-center {
 	padding: 0px;
 	text-align: center!important;

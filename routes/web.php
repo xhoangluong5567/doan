@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,14 +19,30 @@ use Illuminate\Support\Facades\Route;
 // });
 
 
+// Route::group(['middleware'=> 'CheckAdmin','prefix' => 'admin'], function() {
+//     Route::get('/', function () {
+//         return view('backend.admin');
+
+//     })->name('index');
+
+// });
+Route::get('products/changed/{action}/{id}', 'ProductController@action')->name('backend.products.index');
+Route::get('categories/{action}/{id}', 'CategoryController@action')->name('backend.categories.index');
+Route::get('user/{action}/{id}', 'UserController@action')->name('backend.user.index');
+Route::resource('categories', 'CategoryController');
+Route::resource('products', 'ProductController');
+Route::resource('user', 'UserController');
+
+
+
 Route::group(['prefix' => 'login', 'middleware' => 'CheckLogedIn'], function () {
-    Route::get('/', 'AdminController@getLogin');
+    Route::get('/', 'AdminController@getLogin')->name('get.login');
     Route::post('/', 'AdminController@postLogin');
 
 
 
 });
-Route::get('/register', 'AdminController@getRegister');
+Route::get('/register', 'AdminController@getRegister')->name('get.register');
 Route::post('/register', 'AdminController@postRegister');
 
 Route::get('/logout', 'AdminController@getLogout');
@@ -33,29 +50,54 @@ Route::get('/logout', 'AdminController@getLogout');
 Route::get('/search', 'ProductController@search');
 
 
-
-Route::resource('user', 'UserController');
-
 Route::group(['prefix' => 'laravel-filemanager'], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
-Route::resource('categories', 'CategoryController');
-Route::resource('products', 'ProductController');
+
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('categories/{id}','CategoryController@show');
 Route::get('product/{id}','ProductController@showhang');
-Route::get('products/{action}/{id}', 'ProductController@action')->name('backend.products.index');
-Route::get('categories/{action}/{id}', 'CategoryController@action')->name('backend.categories.index');
-Route::get('user/{action}/{id}', 'UserController@action')->name('backend.user.index');
+Route::get('cart/delete/{id}','CartController@getDeleteCart');
 
 
 
 
+Route::prefix('shopping')->group(function () {
+    Route::get('add/{id}', 'CartController@addProduct')->name('add.cart');
+    Route::get('/danh-sach', 'CartController@showProduct')->name('get.shopping.cart');
+    Route::get('update','CartController@getUpdateCart');
+    Route::get('delete/{id}','CartController@getDeleteCart');
 
 
+    
+
+
+    });
+Route::group(['prefix' => 'gio-hang', 'middleware' => 'CheckLogedUser'], function (){
+    Route::get('/thanh-toan', 'CartController@getFormPay')->name('get.form.pay');
+            
+        });
+    
 
 Route::group(['middleware' => 'CheckLogedOut'], function () {
     Route::get('/admin', function () {
         return view('backend.home');
     });
 });
+Route::post('/checkout', 'CartController@postCheckOut');
+Route::get('/complete', 'CartController@getComplete');
+    
+Route::resource('bill', 'BillController');
+
+
+
+Route::get('/profile','ProfileController@profile');
+
+
+Route::get('/reset-password/{token}', 'ResetPasswordController@getPassword');
+Route::post('/reset-password', 'ResetPasswordController@updatePassword');
+Route::get('/forget-password', 'ForgotPasswordController@getEmail');
+Route::post('/forget-password', 'ForgotPasswordController@postEmail');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

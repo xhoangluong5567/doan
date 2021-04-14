@@ -10,6 +10,8 @@ body {
 	background: #f1f4f7;
 	padding-top: 50px;
 	color: #5f6468;
+
+
 }
 
 p {
@@ -939,7 +941,6 @@ h1.page-header {
     box-shadow: 0 1px 1px rgb(0 0 0 / 5%);
     margin: 0;
     MARGIN: 0px auto;
-    width: 80%;
-    float: right;
     margin-top: 13px;
+	padding-left: 20px;
 }

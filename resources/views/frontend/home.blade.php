@@ -10,13 +10,13 @@
         <div class="autoplay">
             @if(isset($productHot))
                 @foreach($productHot as $hot)
-                    <div class="col-md-3">
-                        <td><img style="width:200px; height:200px;"
+                    <div class="col-md-3" style="text-align: center;">
+                        <td><img style="width:200px; height:200px; margin: 0px auto;"
                                 src="{{ url('upload') }}/{{ $hot->images }}" class="thumbnail"></td>
                         <h5>{{ $hot->name }}</h5>
 
                         <p>                            <a style="color:white;"
-                                href="{{ asset('cart/add/'.$hot->id) }}"
+                                href="{{ route('add.cart',$hot->id) }}"
                                 class="btn btn-warning">Mua Hàng</a>
                             <a style="color:white;" href="{{ url('product') }}/{{ $hot->id }}"
                                 class="btn btn-danger">Xem chi tiết</a>
@@ -73,13 +73,13 @@
     <div class="container products">
         <div class="products">
             <?php $categories = App\Category::all() ?>
-            @foreach($categories as $categories)
+            @foreach($categoriesPublic as $categoriesPublic)
                 <a>
                     <h1 style="text-align:center; margin-top:30px; margin-bottom:30px; color:black; border:2px solid orange; "
-                        value="{{ $categories->id }}">{{ $categories->name }}</h1>
+                        value="{{ $categoriesPublic->id }}">{{ $categoriesPublic->name }}</h1>
                 </a>
                 <div class="product-list row">
-                    @foreach($categories->products as $product)
+                    @foreach($categoriesPublic->products as $product)
 
                         <div class="product-item col-md-3 col-sm-6 col-xs-12">
                             <a href="{{ url('product') }}/{{ $product->id }}"><img
@@ -88,7 +88,7 @@
                             <p class="name">{{ ($product->name) }} VND</p>
                             <p class="price">{{ number_format($product->price) }} VND</p>
                             <a style="color:white;"
-                                href="{{ asset('cart/add/'.$product->id) }}"
+                                href="{{ route('add.cart',$product->id) }}"
                                 class="btn btn-warning">Mua Hàng</a>
                             <a style="color:white;" href="{{ url('product') }}/{{ $product->id }}"
                                 class="btn btn-danger">Xem chi tiết</a>

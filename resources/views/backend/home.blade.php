@@ -25,7 +25,7 @@
 						</svg>
 					</div>
 					<div class="col-sm-9 col-lg-7 widget-right">
-						<div class="large">120</div>
+						<div class="large">{{\DB::table('products')->count()}}</div>
 						<div class="text-muted">Sản phẩm</div>
 					</div>
 				</div>
@@ -40,7 +40,7 @@
 						</svg>
 					</div>
 					<div class="col-sm-9 col-lg-7 widget-right">
-						<div class="large">52</div>
+						<div class="large">0</div>
 						<div class="text-muted">Doanh Thu</div>
 					</div>
 				</div>
@@ -55,7 +55,7 @@
 						</svg>
 					</div>
 					<div class="col-sm-9 col-lg-7 widget-right">
-						<div class="large">24</div>
+						<div class="large">{{\DB::table('users')->count()}}</div>
 						<div class="text-muted">Người dùng</div>
 					</div>
 				</div>
@@ -70,29 +70,12 @@
 						</svg>
 					</div>
 					<div class="col-sm-9 col-lg-7 widget-right">
-						<div class="large">25.2k</div>
+						<div class="large">{{\DB::table('categories')->count()}}</div>
 						<div class="text-muted">Danh mục</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<!--/.row-->
-
-	<div class="row">
-		<div class="col-md-12">
-			<div class="panel panel-red">
-				<div class="panel-heading dark-overlay"><svg class="glyph stroked calendar">
-						<use xlink:href="#stroked-calendar"></use>
-					</svg>Lịch</div>
-				<div class="panel-body">
-					<div id="calendar"></div>
-				</div>
-			</div>
-		</div>
-		<!--/.col-->
-	</div>
-	<!--/.row-->
 </div>
-<!--/.main-->
 @endsection

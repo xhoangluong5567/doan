@@ -35,7 +35,12 @@
 								</div>
 								<div class="form-group">
 									<label>Giá sản phẩm</label>
-									<input required type="number" name="price" class="form-control" value="1500000">
+									<input required type="number" name="price" class="form-control" value="">
+									@if ($errors->has('price'))
+									<span class="help-block">
+										<strong style="color: red;">{{ $errors->first('price')}}</strong></br>
+									</span>
+									@endif
 								</div>
 								<div class="form-group">
                                     <label>Ảnh chi tiết sản phẩm</label>

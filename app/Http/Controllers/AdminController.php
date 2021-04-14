@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RequestRegister;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -43,12 +44,12 @@ class AdminController extends Controller
         return view('backend.register');
     }
 
-    public function postRegister(Request $request) {
+    public function postRegister(RequestRegister $requestRegister) {
         $user = new User();
-        $user->name = $request->name;
-        $user->password =bcrypt($request->password);
-        $user->email = $request->email;
-        $user->phone =($request->phone);
+        $user->name = $requestRegister->name;
+        $user->password =bcrypt($requestRegister->password);
+        $user->email = $requestRegister->email;
+        $user->phone =($requestRegister->phone);
 
         $user->save();
 

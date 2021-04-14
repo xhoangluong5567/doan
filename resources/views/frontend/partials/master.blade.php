@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/home.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/slick.css') }}">
-    <link rel="stylesheet" href="{{ asset('adminlte/css/main.css') }}">
 
     
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
@@ -39,10 +38,23 @@
     </script>
 
 </head>
-<nav class="nav nav-fill">
-        <a class="login" href="#">Đăng nhập</a>
-        <a class="dangky" href="#">Đăng Kí</a>
-    </nav>
+<div class="dropps-menu" style="background: cornsilk;">
+<ul class="nav">
+@if (Auth::check())
+<li class="nav-menu"><a href="#">Xin chào {{Auth::user()->name}} !</a></li>
+<li class="nav-menu"><a href="#">Quản lí thông tin</a></li>
+<li class="nav-menu"><a href="#">Quản lí đơn hàng</a></li>
+<li class="nav-menu"><a href="{{asset('logout')}}">Đăng xuất</a></li>
+
+
+@else
+<li class="nav-menu"><a href="{{route('get.login')}}">Đăng nhập</a></li>
+<li class="nav-menu"><a href="{{route('get.register')}}">Đăng kí</a></li>
+
+@endif
+
+</ul>
+</div>
     <header id="header">
         <div class="container">
             <div class="row">
@@ -59,8 +71,8 @@
                     <input type="submit" name="submit" value="Tìm Kiếm">
                 </div>
                 <div id="cart" class="col-md-2 col-sm-12 col-xs-12">
-                    <a class="display" href="#">Giỏ hàng</a>
-                    <a href="#">6</a>
+                    <a class="display" href="{{route('get.shopping.cart')}}">Giỏ hàng</a>
+                    <a href="{{route('get.shopping.cart')}}">{{Cart::count()}}</a>
                 </div>
             </div>
         </div>

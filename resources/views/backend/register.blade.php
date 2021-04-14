@@ -31,37 +31,58 @@
                 </div>
                 <div class="d-flex justify-content-center form_container">
                     <form id="login-fomt" method="post">
-                        @include('backend.errors.note')
                         @csrf
                         <div class="input-group mb-3">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
                             <input type="text" name="name" class="form-control input_user"
-                                value="" placeholder="Họ tên:">
+                                value="{{ old('name') }}" placeholder="Họ tên:">
+
                         </div>
+                        @if ($errors->has('name'))
+									<span class="help-block">
+										<strong style="color: red;">{{ $errors->first('name')}}</strong></br>
+									</span>
+									@endif
                         <div class="input-group mb-3">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                            <input type="text" name="email" class="form-control input_user"
+                            <input type="text" name="email" id="exampleInputEmail1" class="form-control input_user"
                                 value="{{ old('email') }}" placeholder="Email:">
+
                         </div>
+                        @if ($errors->has('email'))
+									<span class="help-block">
+										<strong style="color: red;">{{ $errors->first('email')}}</strong></br>
+									</span>
+									@endif
                         <div class="input-group mb-2">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <input type="password" name="password" class="form-control input_pass" value=""
+                            <input type="password" name="password" class="form-control input_pass" value="{{ old('password') }}"
                                 placeholder="Password:">
+                                
                         </div>
+                        @if ($errors->has('password'))
+									<span class="help-block">
+										<strong style="color: red;">{{ $errors->first('password')}}</strong></br>
+									</span>
+									@endif
                         <div class="input-group mb-3">
                             <div class="input-group-append">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
                             <input type="text" name="phone" class="form-control input_user"
-                                value="" placeholder="Số điện thoại:">
+                                value="{{ old('phone') }}" placeholder="Số điện thoại:">
                         </div>
-
+                        @if ($errors->has('phone'))
+									<span class="help-block">
+										<strong style="color: red;">{{ $errors->first('phone')}}</strong></br>
+									</span>
+									@endif
 
                         <div class="d-flex justify-content-center mt-3 login_container">
                             <button type="submit" name="submit" class="btn login_btn" value="submit">Đăng kí</button>

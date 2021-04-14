@@ -8,6 +8,7 @@ use App\Product;
 use App\ProductImage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+
 class ProductController extends Controller
 {
     /**
@@ -18,10 +19,7 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         $products = Product::all();
-        $products = $products->sortByDesc('id');
-
-        
-        return view('backend.products.index', array('products' => $products));
+        return view('backend.products.index', ['products' => $products]);
     }
     //
 
@@ -131,17 +129,22 @@ class ProductController extends Controller
     public function update(Request $request, $id)
 
     {
-        $filename = $request->images->getClientOriginalName();
         $products = Product::find($id);
-        $products->images = $filename;
 
         $products->name = $request['name'];
         $products->price = $request['price'];
         $products->desc = $request['desc'];
-        // $products->images = $request['images'];
+
+        if($request['images'] != null) {
+            $filename = $request->images->getClientOriginalName();
+            $products->images = $request['images'];
+            $request->images->move(public_path('upload'), $filename);
+            
+            $products->images = $filename;
+        }
+            
         $products->categories_id = $request['categories_id'];
         $products->save();
-        $request->images->move(public_path('upload'), $filename);
 
 
         if ($request->hasFile('images_phu')) {

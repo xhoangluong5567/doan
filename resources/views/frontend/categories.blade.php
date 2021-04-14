@@ -11,23 +11,17 @@
 					<p><a href="{{url('product')}}/{{$product->id}}"></a>{{$product->name}}</p>
 					<p class="price">{{number_format($product->price)}} VND</p>
 				</div>
-				@endforeach
-					<div class="marsk">
+				<div class="marsk">
 						<a style="text-decoration: none;" href="{{url('products')}}/{{$product->id}}">Xem chi tiết</a>
 					</div>
-
-					
-
-
-
-
+				@endforeach
+				
 				</div>
-
 			</div>
-
+						
 			<ul id="pagination-lg">
 			</ul>
-		</div>
-
+		</div>	
+						
 
 		@endsection

@@ -43,7 +43,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('layouts.backend.users.create');
     }
 
     /**
@@ -52,9 +52,13 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store( $request)
     {
-        //
+        $users = User::create($request->all());
+        if($users) {
+            return redirect()->route('users.index');
+        }
+        return redirect()->route('users.create');
     }
 
     /**
@@ -65,7 +69,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = \App\User::find($id);
+        return view('user.show', array('user' => $user));
     }
 
     /**
@@ -76,7 +81,12 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+            $users = User::find($id);
+        
+    
+            return view('backend.user.edit',array('user'=>$users));
+            //
+        
     }
 
     /**
@@ -88,7 +98,16 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->name = $request['name'];
+        $user->email = $request['email'];
+        $user->password = $request['password'];
+        $user->is_admin = $request['level'];
+        $user->save();
+        if($user){
+            return redirect()->route('user.index');
+        }
+        return redirect()->route('user.edit');
     }
 
     /**
@@ -99,6 +118,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return redirect()->route('user.index');//
     }
+
 }

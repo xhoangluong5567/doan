@@ -30,11 +30,11 @@
 
             <div class="panel panel-primary">
                 <div class="panel-heading">Danh sách sản phẩm</div>
-                <div class="panel-body">
-                    <div class="bootstrap-table">
-                        <div class="table-responsive">
-                            <a href="{{ asset('products/create') }}" class="btn btn-primary">Thêm
-                                sản phẩm</a>
+                    <div class="panel-body">
+                         <div class="bootstrap-table">
+                              <div class="table-responsive">
+                                  <a href="{{ asset('products/create') }}" class="btn btn-primary">Thêm
+                                        sản phẩm</a>
                             <table class="table">
                                 <thead>
                                     <tr>
@@ -84,24 +84,11 @@
                                         </tr>
                                     @endforeach
                                 </tbody>
-
                             </table>
                         </div>
-
-                        </div>
-
-
-
-                    </div>
-
                     <div class="clearfix"></div>
                 </div>
-
             </div>
-
         </div>
-
     </div>
-
-    <!--/.row-->
 </div>
