@@ -18,20 +18,28 @@ use Illuminate\Support\Facades\Route;
 //     return view('frontend.home');
 // });
 
-
 // Route::group(['middleware'=> 'CheckAdmin','prefix' => 'admin'], function() {
 //     Route::get('/', function () {
 //         return view('backend.admin');
 
 //     })->name('index');
 
+
 // });
+Route::get('/', 'HomeController@index');
+
+    Route::resource('categories', 'CategoryController');
+    Route::resource('products', 'ProductController');
+    Route::resource('user', 'UserController');
+
+
+
+// });
+
 Route::get('products/changed/{action}/{id}', 'ProductController@action')->name('backend.products.index');
 Route::get('categories/{action}/{id}', 'CategoryController@action')->name('backend.categories.index');
 Route::get('user/{action}/{id}', 'UserController@action')->name('backend.user.index');
-Route::resource('categories', 'CategoryController');
-Route::resource('products', 'ProductController');
-Route::resource('user', 'UserController');
+
 
 
 
@@ -42,8 +50,11 @@ Route::group(['prefix' => 'login', 'middleware' => 'CheckLogedIn'], function () 
 
 
 });
-Route::get('/register', 'AdminController@getRegister')->name('get.register');
-Route::post('/register', 'AdminController@postRegister');
+Route::auth();
+// Route::get('/register', 'Auth\RegisterController@create');
+// Route::get('/register', 'Auth\RegisterController@create');
+// Route::get('/register', 'AdminController@getRegister')->name('get.register');
+// Route::post('/register', 'AdminController@postRegister');
 
 Route::get('/logout', 'AdminController@getLogout');
 
@@ -54,13 +65,12 @@ Route::group(['prefix' => 'laravel-filemanager'], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
 
-Route::get('/', 'HomeController@index')->name('home');
 Route::get('categories/{id}','CategoryController@show');
 Route::get('product/{id}','ProductController@showhang');
 Route::get('cart/delete/{id}','CartController@getDeleteCart');
 
 
-
+Route::get('/search', 'AdminController@getSearch');
 
 Route::prefix('shopping')->group(function () {
     Route::get('add/{id}', 'CartController@addProduct')->name('add.cart');
@@ -94,10 +104,5 @@ Route::resource('bill', 'BillController');
 Route::get('/profile','ProfileController@profile');
 
 
-Route::get('/reset-password/{token}', 'ResetPasswordController@getPassword');
-Route::post('/reset-password', 'ResetPasswordController@updatePassword');
-Route::get('/forget-password', 'ForgotPasswordController@getEmail');
-Route::post('/forget-password', 'ForgotPasswordController@postEmail');
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+

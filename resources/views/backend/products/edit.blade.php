@@ -29,6 +29,14 @@
                                     <label>Name</label>
                                     <input type="text" name="name" value="{{ $products->name }}" class="form-control">
                                 </div>
+                                <div class="form-group">
+									<label>% Khuyến mãi</label>
+									<input required type="text" name="discount" class="form-control" value="{{$products->discount}}">
+								</div>
+                                <div class="form-group">
+									<label>Số lượng sp</label>
+									<input required type="text" name="discount" class="form-control" value="{{$products->quantity}}">
+								</div>
                                 
                                 <div class="form-group">
                                     <label>Ảnh sản phẩm</label><br>

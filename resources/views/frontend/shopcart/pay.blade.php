@@ -27,44 +27,45 @@
             </div>    
             <div class="row cart-body">
             <form action="{{ url('/checkout') }}" method="post">
-            <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-md-push-6 col-sm-push-6">
+                @csrf 
+               <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-md-push-6 col-sm-push-6">
                     <!--REVIEW ORDER-->
                     <div class="panel panel-info">
-                        <div class="panel-heading">
-                            Review Order <div class="pull-right"><small><a class="afix-1" href="#">Edit Cart</a></small></div>
+                        <div class="panel-heading" style="color: white;">Đơn hàng đã đặt  
+                        <div class="pull-right"><small><a class="afix-1" href="#">Edit Cart</a></small></div>
                         </div>
-                        <!-- {{dump(get_data_user('web','name'))}} -->
                         <div class="panel-body">
-                            @foreach($products as $product)
+                                                    @foreach($products as $product)
                             <div class="form-group">
                                 <div class="col-sm-3 col-xs-3">
-                                    <img class="img-responsive" src="{{ url('upload') }}/{{$product->options->images}}">
+                                    <img class="img-responsive" src="{{ url('upload') }}/{{$product->options->images}}"/>
                                 </div>
                                 <div class="col-sm-6 col-xs-6">
-                                    <div class="col-xs-12">{{$product->name}}</div>
-                                    <div class="col-xs-12"><small>Quantity:<span>{{$product->qty}}</span></small></div>
+                                <div class="col-xs-12">{{$product->name}}</div>
+                                <div class="col-xs-12"><small>Số lượng:<span>{{$product->qty}}</span></small></div>
                                 </div>
                                 <div class="col-sm-3 col-xs-3 text-right">
-                                    <h6><span>Gia:</span>{{number_format($product->price)}}</h6>
+                                <h6><span>Giá:</span>{{number_format($product->price)}}VND</h6>
                                 </div>
                             </div>
-                                @endforeach
                             <div class="form-group"><hr /></div>
+                            @endforeach
+
                             <div class="form-group">
                                 <div class="col-xs-12">
-                                    <strong>Subtotal</strong>
-                                    <div class="pull-right"><span>VND</span><span>{{Cart::total()}}</span></div>
+                                    <strong>Tổng tiền: </strong>
+                                    <div class="pull-right"><span>{{Cart::subtotal()}} VND </span></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!--REVIEW ORDER END-->
                 </div>
+
                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-md-pull-6 col-sm-pull-6">
                     <!--SHIPPING METHOD-->
                     <div class="panel panel-info">
-                        <div class="panel-heading">Address</div>
+                        <div class="panel-heading" style="color:white">Thông tin người đặt hàng</div>
                         <div class="panel-body">
                         <div class="form-group">
                               <div class="col-md-12"><strong>Họ tên:</strong></div>
@@ -78,17 +79,17 @@
                             </div>
 
                             <div class="form-group">
-                                <div class="col-md-12"><strong>Phone Number:</strong></div>
+                                <div class="col-md-12"><strong>Số điện thoại:</strong></div>
                                 <div class="col-md-12"><input type="text" name="phone" class="form-control" value="{{get_data_user('web','phone')}}" /></div>
                             </div>
                             <div class="form-group">
-                                <div class="col-md-12"><strong>Address:</strong></div>
+                                <div class="col-md-12"><strong>Địa chỉ:</strong></div>
                                 <div class="col-md-12">
                                     <input type="text" name="address" class="form-control" value="" />
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="col-md-12"><strong>Ghi chu:</strong></div>
+                                <div class="col-md-12"><strong>Ghi chú:</strong></div>
                                 <div class="col-md-12">
                                     <input type="text" name="note" class="form-control" value="" />
                                 </div>
@@ -107,6 +108,7 @@
         
             </div>
     </div>
+
 
 
 

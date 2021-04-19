@@ -40,7 +40,7 @@
 						</svg>
 					</div>
 					<div class="col-sm-9 col-lg-7 widget-right">
-						<div class="large">0</div>
+					<div class="large">{{number_format(DB::table('orders')->where('status','3')->sum('total'))}} </div>
 						<div class="text-muted">Doanh Thu</div>
 					</div>
 				</div>
@@ -77,5 +77,9 @@
 			</div>
 		</div>
 	</div>
+
+	</div>
+	<!--/.row-->
 </div>
+<!--/.main-->
 @endsection

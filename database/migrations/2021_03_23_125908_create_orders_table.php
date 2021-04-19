@@ -18,7 +18,7 @@ class CreateOrdersTable extends Migration
             $table->dateTime('date_order');
             $table->string('total');
             $table->string('note')->nullable();
-            $table->string('status')->default(0);
+            $table->string('status')->default(1);
             $table->foreignId('customer_id')->references('id')->on('customers')->onDelete('cascade');
             $table->timestamps();
         });

@@ -96,10 +96,10 @@
                     <div class="col-md-4">
                         <div class="form-inline">
                             <label>Trạng thái giao hàng: </label>
-                            <select name="status" class="form-control input-inline" style="width: 200px">
+                            <select required name="status" class="form-control input-inline" style="width: 200px">
                                 <option value="1">Chưa giao</option>
                                 <option value="2">Đang giao</option>
-                                <option value="2">Đã giao</option>
+                                <option value="3">Đã giao</option>
                             </select>
 
                             <input type="submit" value="Xử lý" class="btn btn-primary">

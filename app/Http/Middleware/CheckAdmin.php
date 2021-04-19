@@ -18,17 +18,10 @@ class CheckAdmin
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::check()) {
-            $user = Auth::user();
-            if ($user->level == 1) {
-                return $next($request);
-            } else {
-                Auth::logout();
-                return redirect()->route('login')->withErrors('Bạn không có quyền truy cập');
-            }
-        } else {
-            return abort(403);
+        if (Auth::user()->level == '1') {
+          return $next($request);
         }
-
+    
+          return redirect('admin');
     }
 }

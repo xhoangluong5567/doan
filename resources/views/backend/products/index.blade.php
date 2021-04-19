@@ -42,6 +42,7 @@
                                         <th scope="col">Tên sản phẩm</th>
                                         <th scope="col">Ảnh sản phẩm</th>
                                         <th scope="col">Giá</th>
+                                        <th scope="col">Số lượng sản phẩm còn</th>
                                         <th scope="col">Nổi bật</th>
                                         <th scope="col">Trạng thái</th>
                                         <th scope="col">Danh mục</th>
@@ -57,7 +58,8 @@
                                             <td><img width="80px"
                                                     src="{{ url('upload') }}/{{ $product->images }}"
                                                     class="thumbnail"></td>
-                                            <td>{{ $product->price }}</td>
+                                            <td>{{number_format($product->price)}} VND</td>
+                                            <td>{{$product->quantity}}</td>
                                             <td><a href="{{ route('backend.products.index',['hot',$product->id]) }}"
                                                     class="label {{ $product->getHot($product->vip)['class'] }}">{{ $product->getHot($product->vip)['name'] }}</a>
                                             </td>

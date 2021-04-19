@@ -43,6 +43,10 @@
 									@endif
 								</div>
 								<div class="form-group">
+									<label>Số lượng sản phẩm</label>
+									<input required type="text" name="quantity" class="form-control" value="">
+								</div>
+								<div class="form-group">
                                     <label>Ảnh chi tiết sản phẩm</label>
                                     <input type="file" multiple class="form-control-file" value="{{old(' images ')}}" name="images">
 									@if ($errors->has('images'))
@@ -62,6 +66,7 @@
 									@endif
                                     
                                 </div>
+								
 								<div class="form-group">
 									<label>Bảo hành</label>
 									<input required type="text" name="warranty" class="form-control" value="12 tháng">
@@ -71,8 +76,8 @@
 									<input required type="text" name="accessories" class="form-control" value="Cáp - Sạc -Tai nghe">
 								</div>
 								<div class="form-group">
-									<label>Khuyến mãi</label>
-									<input required type="text" name="discount" class="form-control" value="SP chưa có chương trình khuyến mãi">
+									<label>% Khuyến mãi</label>
+									<input required type="text" name="discount" class="form-control" value="">
 								</div>
 								<div class="form-group">
 									<label>Tình trạng</label>

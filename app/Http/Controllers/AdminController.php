@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RequestRegister;
+use App\Product;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -59,6 +60,16 @@ class AdminController extends Controller
         }
         return redirect()->back();
 
+    }
+
+    public function getSearch(Request $request) {
+        $result = $request->result;
+        $keyword = $result;
+        $result =str_replace('','%',$result);
+        $items = Product::where('name','like','%'.$result.'%')->get();
+        return view('frontend.search', array('items'=> $items, 'keyword' => $keyword));
+        
+        
     }
 
         

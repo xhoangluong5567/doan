@@ -17,14 +17,15 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('images')->nullable();
-            $table->double('price');
+            $table->integer('price');
+            $table->tinyInteger('quantity')->default(0);
             $table->string('warranty');
             $table->string('accessories');
             $table->string('discount');
             $table->string('status');
             $table->tinyInteger('active')->default(1)->index();
             $table->tinyInteger('hot')->default(1)->index();
-            $table->string('desc');
+            $table->boolean('desc');
             $table->foreignId('categories_id')->references('id')->on('categories')->onDelete('cascade')
             ->onDelete('cascade');
             $table->timestamps();

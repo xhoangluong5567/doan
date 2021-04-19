@@ -39,16 +39,27 @@ class CartController extends Controller
     }
     public function addProduct(Request $request, $id)
     {
-        $products = Product::select('id','name','price','discount','status','warranty','images')->find($id);
+        $products = Product::select('id','name','price','discount','quantity','status','warranty','images')->find($id);
     if (!$products) return  redirect('/');
+
+
+    $price = $products->price;
+    if ($products->discount){
+        $price = $price * (100 - $products->discount) / 100;
+    }
+    if ($products->quantity == 0) {
+        return redirect()->back()->with('warning' , 'Xin lỗi, Sản phẩm tạm thời hết hàng.');
+
+    }
+
     Cart::add([
         'id'=>$id,
         'name'=>$products->name,
         'qty'=>1,
         'price'=>$products->price,
-        'options'=> ['images'=>$products->images,
+        'options'=> ['images'=>$products->images, 'discount'=>$products->discount,'price_old'=>$products->price,
         ]]);
-    return back();
+    return back()->with('success','Thêm hàng vào giỏ thành công');
    }
 
    public function showProduct(){
